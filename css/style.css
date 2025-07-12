@@ -1,0 +1,393 @@
+/* Cuerpo */
+body {
+
+  font-family: Roboto;
+  margin: 0; /* ajustar a la pared */
+  padding: 0; 
+  background-color: #ffffff; /* Color de fondo */
+    
+}
+h1 {
+
+    font-size: 55px;
+    color: #ffffff;
+    text-align: center; 
+    margin: auto;
+}
+h2{
+
+    color: #ffffff;
+    text-align: center;
+
+}
+h3 {
+
+    color: #ffffff;
+    text-align: center; 
+
+}
+h4{
+    color: #ffffff;
+    text-align: center;
+}
+h5{
+  color: #ffffff;
+  text-align: center;
+}
+li {
+    font-size: 16px;
+    color: #ffffff;
+}
+p {
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* ARRIBA */
+/* ================== Imagen inicial ================== */
+.hero-section {
+  background-image: url('../imagenes/fondo.jpg'); 
+  background-size: cover;
+  background-position: center;
+  height: 550px; /* Ajusta la altura a lo que desees */
+  display: flex;
+  position: relative;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px #000;
+}
+
+/* ================== Seccion Nav ================== */
+nav {
+    background-color:transparent;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+    
+  }
+  .menu {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    display: flex;             
+    justify-content: center;
+    background-color:#5a060663;
+    border-radius: 0 0 20px 20px;
+  }
+  .menu > li {
+    position: relative;
+  }
+  .menu > li > a {
+    display: block;
+    padding: 15px 20px;
+    color: #fdfdfd;
+    text-decoration: none;
+  }
+  .menu > li:hover {
+    background-color: #00000057;
+    border-radius: 10px 10px 10px 10px;
+    height: 50px;
+    margin: 4px;
+  }
+
+/* ================== Logo + Nombre + Slogan ================== */
+  .identidad {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: 2px;
+    padding: 10px 10px;
+    border-radius: 10px;
+  }
+  .imagen-mini {
+    width: 120px; 
+    margin-right: 20px; 
+    border-radius: 1000px; 
+  }
+  .nombre-empresa {
+    font-size: 45px;
+    color: #fdfdfd;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+  }
+  .nombre-empresa .slogan {
+    margin-top: 0px;
+    font-size: 18px;
+    color: #fdfdfd;
+    font-weight: normal;
+  }
+
+
+/* MEDIO */
+/* ================== Seccion que somos ================== */
+.zona-info-vertical {
+  padding: 50px 20px;
+  background-color: #fdfdfd;
+  text-align: center;
+}
+.zona-info-vertical h2 {
+  font-size: 36px;
+  color: #5a0606;
+  margin-bottom: 40px;
+}
+.info-box-vertical {
+  background: #fdfdfd;
+  border-left: 5px solid #5a0606;
+  padding: 25px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 700px;
+  box-shadow: 0 4px 10px #0000004d;
+  border-radius: 12px;
+  text-align: left;
+}
+.info-box-vertical h3 {
+  color: #5a0606;
+  margin-bottom: 15px;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+}
+.info-box-vertical h3 i {
+  margin-right: 10px;
+}
+.info-box-vertical p,
+.info-box-vertical li {
+  font-size: 15px;
+  color: #000000;
+  line-height: 1.6;
+}
+.info-box-vertical ul {
+  padding-left: 20px;
+}
+.info-box-vertical li {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.info-box-vertical li i {
+  color: #5a0606;
+  margin-right: 8px;
+}
+
+/* ================== Imagines ================== */
+.contenedor-imagenes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.imagen-con-borde {
+  border-radius: 10px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 10px #0000004d; 
+}
+.imagen-con-borde img {
+  display: block; 
+  width: 500px; 
+  height: auto; 
+}
+
+/* ================== SECCIÓN NOSOTROS ================== */
+.nosotros {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  text-align: center;
+  color: #000000;
+}
+
+.nosotros h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #781010;
+}
+
+.nosotros h2 i {
+  margin-right: 10px;
+  color: #781010;
+}
+
+.nosotros .bloque {
+  max-width: 900px;
+  margin: 0 auto 40px auto;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-left: 5px solid #781010;
+  box-shadow: 0 4px 10px #0000004d;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.nosotros h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #781010;
+  display: flex;
+  align-items: center;
+}
+
+.nosotros h3 i {
+  margin-right: 10px;
+}
+.nosotros p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000;
+}
+.nosotros li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #000000;
+}
+.nosotros ul {
+  padding-left: 20px;
+  text-align: left;
+}
+.nosotros li {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.nosotros li i {
+  color: #781010;
+  margin-right: 8px;
+}
+.mision-vision {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.mision-vision .caja {
+  flex: 1 1 300px;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  border-top: 5px solid #781010;
+  box-shadow: 0 4px 10px #0000004d;
+  text-align: left;
+}
+.mision-vision .caja h3 {
+  font-size: 22px;
+  color: #781010;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.mision-vision .caja h3 i {
+  margin-right: 10px;
+}
+.mision-vision .caja p {
+  font-size: 15px;
+  line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .mision-vision {
+    flex-direction: column;
+    align-items: center;
+  }
+  .nosotros h2 {
+    font-size: 28px;
+  }
+  .nosotros .bloque,
+  .mision-vision .caja {
+    width: 90%;
+  }
+}
+
+/* ================== Seccion Contacto ================== */
+.zona-contacto {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  padding: 40px;
+  background-color: #fdfdfd;
+  margin: 40px 0;
+  gap: 30px;
+  border-top: 5px solid #781010;
+  box-shadow: 0 0 10px #0000004d;
+  text-align: left;
+  border-radius: 20px 20px 5px 5px;
+
+}
+
+.formulario-contacto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+}
+.formulario-contacto h3 {
+  color: #781010;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.formulario-contacto input,
+.formulario-contacto textarea {
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #000;
+  font-size: 14px;
+  resize: none;
+  max-height: 500px;
+  min-height: 40px;
+  font-family: Roboto;
+  box-shadow: 0 0 1px #000;
+}
+.formulario-contacto button {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background-color: #781010;
+  color: #fdfdfd;
+  font-weight: bold;
+  transition: 0.3s ease;
+  font-family: Roboto;
+  box-shadow: 0 0 3px #000;
+}
+.formulario-contacto button:hover {
+  background-color: #9e1818;
+  transform: scale(1.03);
+  box-shadow: 0 0 3px #9e1818;
+}
+.redes-sociales {
+  display: flex;
+  gap: 15px;
+  flex-direction: space-between;
+  align-items: center;
+  justify-content: center;
+}
+.redes-sociales img {
+  width: 51px;
+  height: 51px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-bottom: 30px;
+
+}
+.redes-sociales img:hover {
+  transform: scale(1.1);
+}
+
+/* ABAJO */
+.footer {
+  background: #781010;
+  padding: 20px;
+  color: #fdfdfd;
+  font-size: 12px;
+  text-decoration: none;
+  box-shadow: 0 0 10px #000;
+}
+.copy{
+    background: #9e1818;
+    padding: 1px;
+    text-align: center;
+}
