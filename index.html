@@ -1,175 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Girasoles nocturnos</title>
+<style>
+  :root {
+    --bg-top: #050912;
+    --bg-bot: #0c1420;
+    --grass1: #123a3a;
+    --grass2: #1c5c52;
+    --grass3: #0a2b2b;
+    --grass-tip: #3d9c7c;
+    --stem: #1f7a8c;
+    --stem-glow: #4fd6e8;
 
-  <head>
-    <title>Pirámide C.R.</title>
-    <link href="imagenes/Logo.png" rel="icon">
-    <link rel="stylesheet" href="css/style.css"/>
-    <meta charset="UTF-8">  
-    <meta name="description" content="Piramide CR - es una pagina dedicada al Diseño y cálculo estructural. Tu sueño, nuestro cálculo preciso.">
-    <meta name="keywords" content="construcciones, construcción civil, piramide_cr">
-    <meta name="author" content="Piramide_CR">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    --petal1: #fff1a8;
+    --petal2: #ffd23f;
+    --petal3: #ffb703;
+    --center: #7a4a12;
+    --center-hi: #a86b1e;
+    --glow: #ffe27a;
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-  </head>
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { height: 100%; scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    height: 100%;
+    margin: 0;
+    background: radial-gradient(ellipse at 50% 30%, var(--bg-bot), var(--bg-top) 75%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0;
+  }
+  .stage { width: 100%; height: 100%; max-width: 640px; margin: 0 auto; }
+  svg { width: 100%; height: 100%; display: block; }
 
+  .sway {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: sway 6s ease-in-out infinite;
+  }
+  .sway.d2 { animation-delay: -1.6s; animation-duration: 6.8s; }
+  .sway.d3 { animation-delay: -3.1s; animation-duration: 5.6s; }
+  @keyframes sway {
+    0%, 100% { transform: rotate(-1.4deg); }
+    50% { transform: rotate(1.4deg); }
+  }
+  .twinkle { animation: tw 3s ease-in-out infinite; }
+  .twinkle.t2 { animation-delay: -1s; animation-duration: 4s; }
+  .twinkle.t3 { animation-delay: -2s; animation-duration: 2.4s; }
+  @keyframes tw {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 1; }
+  }
+  .drift {
+    animation: drift 7s ease-in-out infinite;
+  }
+  .drift.p2 { animation-delay: -2.3s; animation-duration: 8.5s; }
+  .drift.p3 { animation-delay: -4.1s; animation-duration: 6.2s; }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(-18px); opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .sway, .twinkle, .drift { animation: none; }
+  }
+</style>
+</head>
 <body>
-    
-  <div class="hero-section">
-    <nav>
-      <ul class="menu">
-        <li><a href="#que-somos">Sobre Pirámide C.R.</a></li>
-        <li><a href="#nosotros">Nosotros</a></li>
-        <li><a href="#mision-vision">Misión-Visión</a></li>
-        <li><a href="#Contactanos">Contacto</a></li> 
-      </ul>
-    </nav>
+  <div class="stage">
+    <svg viewBox="0 0 500 800" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="skyGlow" cx="50%" cy="45%" r="60%">
+          <stop offset="0%" stop-color="#152233"/>
+          <stop offset="100%" stop-color="#050912"/>
+        </radialGradient>
 
-    <div class="identidad">
-      <img src="imagenes/Logo.png" alt="Logo" class="imagen-mini">
-      <div class="nombre-empresa">
-        <h1>Pirámide C.R.</h1>
-        <p class="slogan">"Tu sueño, nuestro calculo preciso"</p>
-      </div>
-    </div>
+        <radialGradient id="petalGrad" cx="45%" cy="30%" r="80%">
+          <stop offset="0%" stop-color="var(--petal1)"/>
+          <stop offset="55%" stop-color="var(--petal2)"/>
+          <stop offset="100%" stop-color="var(--petal3)"/>
+        </radialGradient>
+        <radialGradient id="centerGrad" cx="35%" cy="30%" r="75%">
+          <stop offset="0%" stop-color="var(--center-hi)"/>
+          <stop offset="100%" stop-color="var(--center)"/>
+        </radialGradient>
+        <linearGradient id="stemGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="var(--stem-glow)"/>
+          <stop offset="100%" stop-color="var(--stem)"/>
+        </linearGradient>
+
+        <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="10" result="blur"/>
+          <feMerge>
+            <feMergeNode in="blur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="bigGlow" x="-150%" y="-150%" width="400%" height="400%">
+          <feGaussianBlur stdDeviation="22"/>
+        </filter>
+
+        <g id="sunPetal">
+          <path d="M0,-4 C8,-30 7,-62 0,-76 C-7,-62 -8,-30 0,-4 Z" fill="url(#petalGrad)" stroke="var(--petal3)" stroke-width="0.6"/>
+        </g>
+        <g id="sunflower">
+          <use href="#sunPetal" transform="rotate(0)"/>
+          <use href="#sunPetal" transform="rotate(30)"/>
+          <use href="#sunPetal" transform="rotate(60)"/>
+          <use href="#sunPetal" transform="rotate(90)"/>
+          <use href="#sunPetal" transform="rotate(120)"/>
+          <use href="#sunPetal" transform="rotate(150)"/>
+          <use href="#sunPetal" transform="rotate(180)"/>
+          <use href="#sunPetal" transform="rotate(210)"/>
+          <use href="#sunPetal" transform="rotate(240)"/>
+          <use href="#sunPetal" transform="rotate(270)"/>
+          <use href="#sunPetal" transform="rotate(300)"/>
+          <use href="#sunPetal" transform="rotate(330)"/>
+          <circle r="21" fill="url(#centerGrad)"/>
+          <g opacity="0.4" stroke="var(--center)" stroke-width="0.7">
+            <circle r="6" fill="none"/>
+            <circle r="12" fill="none"/>
+            <circle r="17" fill="none"/>
+          </g>
+        </g>
+
+        <linearGradient id="bladeGrad" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="var(--grass3)"/>
+          <stop offset="55%" stop-color="var(--grass2)"/>
+          <stop offset="100%" stop-color="var(--grass-tip)"/>
+        </linearGradient>
+        <radialGradient id="bushGrad" cx="50%" cy="15%" r="95%">
+          <stop offset="0%" stop-color="var(--grass2)"/>
+          <stop offset="100%" stop-color="var(--grass3)"/>
+        </radialGradient>
+
+        <g id="grassBlade">
+          <path d="M0,0 C-8,-90 6,-170 -3,-250 C7,-180 26,-100 16,0 Z" fill="url(#bladeGrad)"/>
+        </g>
+        <g id="grassBladeThin">
+          <path d="M0,0 C-3,-60 4,-120 -1,-180 C4,-130 10,-60 7,0 Z" fill="url(#bladeGrad)"/>
+        </g>
+
+                <g id="leafBlade">
+          <path d="M0,0 C-4,-24 -3,-52 0,-78 C3,-52 4,-24 0,0 Z" fill="var(--grass2)" stroke="var(--grass3)" stroke-width="0.6"/>
+          <path d="M0,-4 L0,-70" stroke="var(--grass-tip)" stroke-width="0.6" opacity="0.4"/>
+        </g>
+                <g id="leafFan">
+          <use href="#leafBlade" transform="rotate(-34) scale(0.8)"/>
+          <use href="#leafBlade" transform="rotate(-18) scale(1.05)"/>
+          <use href="#leafBlade" transform="rotate(-2) scale(1.2)"/>
+          <use href="#leafBlade" transform="rotate(14) scale(1.05)"/>
+          <use href="#leafBlade" transform="rotate(30) scale(0.85)"/>
+        </g>
+
+        <g id="leafClump">
+          <path d="M0,0 C-30,-18 -55,-10 -66,10 C-40,20 -14,16 0,0 Z" fill="var(--grass2)"/>
+          <path d="M0,0 C30,-18 55,-10 66,10 C40,20 14,16 0,0 Z" fill="var(--grass3)"/>
+        </g>
+
+                <g id="bushLobe">
+          <ellipse rx="70" ry="46" fill="url(#bushGrad)"/>
+        </g>
+      </defs>
+
+      <rect x="0" y="0" width="500" height="800" fill="url(#skyGlow)"/>
+
+            <g fill="#bfe6ff">
+        <circle class="twinkle t1" cx="60" cy="70" r="1.6"/>
+        <circle class="twinkle t2" cx="120" cy="140" r="1.2"/>
+        <circle class="twinkle t3" cx="200" cy="60" r="1.8"/>
+        <circle class="twinkle t1" cx="330" cy="110" r="1.3"/>
+        <circle class="twinkle t2" cx="410" cy="180" r="1.6"/>
+        <circle class="twinkle t3" cx="450" cy="70" r="1.1"/>
+        <circle class="twinkle t1" cx="40" cy="220" r="1.3"/>
+        <circle class="twinkle t2" cx="270" cy="40" r="1.4"/>
+        <circle class="twinkle t3" cx="160" cy="200" r="1.1"/>
+        <circle class="twinkle t1" cx="380" cy="260" r="1.5"/>
+        <circle class="twinkle t2" cx="470" cy="300" r="1.2"/>
+        <circle class="twinkle t3" cx="30" cy="330" r="1.4"/>
+        <circle class="twinkle t1" cx="230" cy="150" r="1.2"/>
+        <circle class="twinkle t2" cx="90" cy="380" r="1.3"/>
+      </g>
+
+            <g fill="var(--stem-glow)">
+        <circle class="drift p1" cx="150" cy="520" r="2.2"/>
+        <circle class="drift p2" cx="330" cy="480" r="1.8"/>
+        <circle class="drift p3" cx="230" cy="560" r="2.4"/>
+        <circle class="drift p1" cx="280" cy="440" r="1.6"/>
+        <circle class="drift p2" cx="190" cy="600" r="1.9"/>
+      </g>
+
+            <g opacity="0.8">
+        <use href="#grassBlade" transform="translate(50,780) rotate(-14) scale(1.15)"/>
+        <use href="#grassBladeThin" transform="translate(85,780) rotate(-4) scale(1)"/>
+        <use href="#grassBlade" transform="translate(115,780) rotate(6) scale(0.95)"/>
+        <use href="#grassBladeThin" transform="translate(30,780) rotate(-20) scale(0.85)"/>
+        <use href="#grassBlade" transform="translate(385,780) rotate(12) scale(1.2)"/>
+        <use href="#grassBladeThin" transform="translate(420,780) rotate(4) scale(1)"/>
+        <use href="#grassBlade" transform="translate(455,780) rotate(-8) scale(0.95)"/>
+        <use href="#grassBladeThin" transform="translate(360,780) rotate(20) scale(0.8)"/>
+      </g>
+
+            <g class="sway d1">
+        <path d="M190,780 C185,650 210,560 200,420" fill="none" stroke="url(#stemGrad)" stroke-width="6" stroke-linecap="round" filter="url(#softGlow)"/>
+      </g>
+      <g class="sway d2">
+        <path d="M250,780 C258,630 235,540 248,380" fill="none" stroke="url(#stemGrad)" stroke-width="7" stroke-linecap="round" filter="url(#softGlow)"/>
+      </g>
+      <g class="sway d3">
+        <path d="M310,780 C305,660 325,570 315,450" fill="none" stroke="url(#stemGrad)" stroke-width="5.5" stroke-linecap="round" filter="url(#softGlow)"/>
+      </g>
+
+            <use href="#leafClump" transform="translate(200,540) scale(0.9)"/>
+      <use href="#leafClump" transform="translate(250,470) rotate(8) scale(1.1)"/>
+      <use href="#leafClump" transform="translate(315,590) rotate(-6) scale(0.85)"/>
+
+            <g opacity="0.95">
+        <use href="#bushLobe" transform="translate(150,745) scale(1.1)"/>
+        <use href="#bushLobe" transform="translate(250,760) scale(1.35)"/>
+        <use href="#bushLobe" transform="translate(350,748) scale(1.15)"/>
+        <use href="#bushLobe" transform="translate(200,730) scale(0.9)" opacity="0.85"/>
+        <use href="#bushLobe" transform="translate(305,732) scale(0.85)" opacity="0.85"/>
+      </g>
+
+            <g opacity="0.95">
+        <use href="#leafFan" transform="translate(140,750) rotate(-6) scale(1.1)"/>
+        <use href="#leafFan" transform="translate(220,762) rotate(3) scale(1.3)"/>
+        <use href="#leafFan" transform="translate(300,752) rotate(-4) scale(1.15)"/>
+        <use href="#leafFan" transform="translate(370,745) rotate(8) scale(1)"/>
+        <use href="#leafFan" transform="translate(180,720) rotate(-10) scale(0.8)" opacity="0.9"/>
+        <use href="#leafFan" transform="translate(330,715) rotate(6) scale(0.75)" opacity="0.9"/>
+      </g>
+
+            <g opacity="0.95">
+        <use href="#grassBladeThin" transform="translate(120,790) rotate(-16) scale(1.2)"/>
+        <use href="#grassBlade" transform="translate(160,795) rotate(-6) scale(1.15)"/>
+        <use href="#grassBladeThin" transform="translate(200,798) rotate(4) scale(1)"/>
+        <use href="#grassBlade" transform="translate(280,798) rotate(-3) scale(1.1)"/>
+        <use href="#grassBladeThin" transform="translate(320,795) rotate(8) scale(0.95)"/>
+        <use href="#grassBlade" transform="translate(360,792) rotate(-10) scale(1.2)"/>
+        <use href="#grassBladeThin" transform="translate(390,790) rotate(14) scale(0.9)"/>
+      </g>
+
+            <circle cx="200" cy="418" r="55" fill="var(--glow)" opacity="0.35" filter="url(#bigGlow)"/>
+      <circle cx="248" cy="378" r="65" fill="var(--glow)" opacity="0.4" filter="url(#bigGlow)"/>
+      <circle cx="315" cy="448" r="50" fill="var(--glow)" opacity="0.32" filter="url(#bigGlow)"/>
+
+            <g class="sway d1"><use href="#sunflower" transform="translate(200,418) scale(1)" filter="url(#softGlow)"/></g>
+      <g class="sway d2"><use href="#sunflower" transform="translate(248,378) scale(1.2)" filter="url(#softGlow)"/></g>
+      <g class="sway d3"><use href="#sunflower" transform="translate(315,448) scale(0.9)" filter="url(#softGlow)"/></g>
+    </svg>
   </div>
-
-
-  <section class="zona-info-vertical" id="que-somos">
-
-    <h2><i class="fas fa-build"></i> Sobre Pirámide C.R.</h2>
-    
-    <div class="info-box-vertical">
-      <h3><i class="fas fa-users"></i> ¿Qué somos?</h3>
-      <p> Somos una empresa dedicada al presupuesto de obras civiles que se basa en la satisfacción, seguridad y confianza que se trasmite a los clientes.  </p>
-    </div>
-
-    <div class="info-box-vertical">
-      <h3><i class="fas fa-cogs"></i> ¿Qué hacemos?</h3>
-      <p>Pirámide C.R. realiza propuestas completas de construcciones, de una manera más especializada y acorde a los anhelos de los clientes. Se ofrecen servicios a domicilio, asesoramiento, presupuesto completo, y se evitan gastos innecesarios o incorrectos, así como desperdicios.</p>
-    </div>
-
-    <div class="info-box-vertical">
-      <h3><i class="fas fa-gift"></i> ¿Qué ofrecemos?</h3>
-      <ul>
-        <li><i class="fas fa-check-circle"></i> Calidad </li>
-        <li><i class="fas fa-check-circle"></i> Seguridad </li>
-        <li><i class="fas fa-check-circle"></i> Optimización de costos </li>
-        <li><i class="fas fa-check-circle"></i> Asesorías </li>
-        <li><i class="fas fa-check-circle"></i> Rapidez </li>
-        <li><i class="fas fa-check-circle"></i> Confianza </li>
-      </ul>
-    </div>
-
-  </section>
-  
-
-  <div class="contenedor-imagenes">
-    <div class="imagen-con-borde">
-        <img loading="lazy" src="imagenes/foto1.jpg" alt="Imagen 1">
-    </div>
-    <div class="imagen-con-borde">
-        <img loading="lazy" src="imagenes/foto2.jpg" alt="Imagen 2">
-    </div>
-</div>
-  
-  
-    <section class="nosotros" id="nosotros">
-
-      <h2><i class="fas fa-users"></i> Sobre Nosotros</h2>
-      
-      <div class="info-box-vertical">
-        <h3><i class="fas fa-user-graduate"></i> Creadores</h3>
-        <ul>
-          <li><i class="fas fa-user"></i> Valeria Peraza Vega</li>
-          <li><i class="fas fa-user"></i> Denisse Hernández Mata</li>
-          <li><i class="fas fa-chalkboard-teacher"></i> Colegio Técnico Profesional de Calle Blancos</li>
-        </ul>
-      </div>
-
-    
-      <div class="info-box-vertical">
-
-        <h3><i class="fas fa-tasks"></i> Objetivos</h3>
-        <ul>
-          <li><i class="fas fa-check-circle"></i>Llegar a ser reconocidos por un gran servicio de calidad.</li>
-          <li><i class="fas fa-check-circle"></i> Logra dar un alto nivel de confianza a los clientes.</li>
-          <li><i class="fas fa-check-circle"></i> Crear un sistema de presupuesto especializado en los deseos de los clientes.</li>
-        </ul>
-      </div>
-
-      <div class="mision-vision" id="mision-vision">
-        <div class="caja">
-          <h3><i class="fas fa-bullseye"></i> Misión</h3>
-          <p>Ser una empresa accesible que ofrezca calidad, rapidez y se enfoque en los deseos del cliente. </p>
-        </div>
-        <div class="caja">
-          <h3><i class="fas fa-rocket"></i> Visión</h3>
-          <p>Nuestra meta es convertirnos en una empresa reconocida y solicitada, donde los clientes puedan encontrar todo lo que buscan y satisfacer sus deseos.</p>
-        </div>
-      </div>
-      
-      <div class="info-box-vertical">
-        <h3><i class="fas fa-tasks"></i> Ventajas</h3>
-        <ul>
-          <li><i class="fas fa-check-circle"></i> Somos completamente transparentes con los clientes durante todo el proyecto.</li>
-          <li><i class="fas fa-check-circle"></i> Asesoramos a los clientes en áreas de finanzas, diseño y calidad.</li>
-          <li><i class="fas fa-check-circle"></i> Ayudamos a los clientes a organizar sus finanzas y ahorrar dinero durante las obras civiles.</li>
-          <li><i class="fas fa-check-circle"></i> Ofrecemos servicios personalizados y a domicilio.</li>
-
-        </ul>
-      </div>
-
-    </section>
-    
-    
-    
-
-
-
-    <div class="zona-contacto" id="Contactanos">
-      <form class="formulario-contacto" action="mailto:perazavaleria039@gmail.com" method="POST" enctype="text/plain">
-        <h3>Contáctanos</h3>
-        <input type="text" name="nombre" placeholder="Tu Nombre:" required>
-        <input type="email" name="gmail" placeholder="Tu Gmail:" required>
-        <textarea name="mensaje" rows="15" placeholder="Tu Mensaje:" ></textarea>
-        <button type="submit">Enviar</button>
-      </form>
-
-      <div class="redes-sociales">
-        <a href="https://www.instagram.com/piramide_cr/" target="_blank">
-          <img loading="lazy" src="imagenes/insta.png" alt="Instagram">
-        </a>
-        
-
-      </div>
-    </div>
-
-
-
-  <footer class="footer">
-    <div class="footer-content">
-      <div>
-        <h2>Pirámide C.R.</h2> <hr>
-        <p>"Tu sueño, nuestro cálculo preciso"</p>
-        <p>Colegio Técnico Profesional Calle Blancos</p>
-        <p>Sección 11-3 B | Expotécnica 2025</p>
-      </div>
-    </div>  
-  </footer>
-
-
-    <div class="copy">
-        <p>&copy; 2025 Pirámide C.R.</p> 
-    </div>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init();
-    </script>
-
 </body>
 </html>
+  
